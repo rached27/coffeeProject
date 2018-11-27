@@ -147,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="1410" y="72"/>
         </scene>
-        <!--Item-->
+        <!--Liste de cafés-->
         <scene sceneID="5Wc-a8-VIJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SHV-UK-WwZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="TDe-n8-V3k"/>
+                    <tabBarItem key="tabBarItem" title="Liste de cafés" id="TDe-n8-V3k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hs2-F9-UTd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

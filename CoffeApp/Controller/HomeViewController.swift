@@ -86,7 +86,7 @@ extension HomeViewController:UITableViewDataSource{
                 coffee?.tags = Tags.string("aucun")
                 print("aucun")
             }
-            cell.thisCoffee = coffee
+            cell.coffeeInstance = coffee
             return cell
         }
         return CoffeeTableViewCell()

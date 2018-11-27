@@ -14,13 +14,11 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var locationManager:CLLocationManager?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
+
         
         // Override point for customization after application launch.
         return true
