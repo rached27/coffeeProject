@@ -12,8 +12,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
-    var locationManager: CLLocationManager!
-    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager = CLLocationManager()
     var coffeesArray:Coffees?
     var selectedCoffee:Coffee?
     
@@ -30,32 +30,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     goToLocation(lattitude: (coffeesArray?.bars![0].latitude!)!, longitude: (coffeesArray?.bars![0].longitude!)!)
     }
     else {
-    let allAnnotations = self.map.annotations
-    self.map.removeAnnotations(allAnnotations)
+    let allAnnotations = self.mapView.annotations
+    self.mapView.removeAnnotations(allAnnotations)
     addAnnotations(coffee: selectedCoffee!)
     goToLocation(lattitude: (selectedCoffee?.latitude)!, longitude: (selectedCoffee?.longitude)!)
     }
     }
     
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
-    
-    
-    
-    
-    
-    
-    
     @IBAction func currentPosition(_ sender: Any) {
-        let userlocation = map.userLocation
-        let region = MKCoordinateRegionMakeWithDistance((userlocation.location?.coordinate)!, 1500, 1500)
-        map.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
+        
+        if CLLocationManager.locationServicesEnabled() == true {
+            
+            if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .notDetermined {
+                
+                locationManager.requestWhenInUseAuthorization()
+            }
+            
+            locationManager.desiredAccuracy = 1.0
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+            
+        } else {
+            print("PLease turn on location services or GPS")
+        }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+        self.mapView.setRegion(region, animated: true)
+        
+    }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Unable to access your current location")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -71,13 +80,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let coffeePoint = MKPointAnnotation()
         coffeePoint.title = address
         coffeePoint.coordinate = CLLocationCoordinate2D(latitude: lattitude!, longitude: longitude!)
-        map.addAnnotation(coffeePoint)
+        mapView.addAnnotation(coffeePoint)
     }
     
     func goToLocation(lattitude:Double,longitude:Double){
         let location = CLLocationCoordinate2DMake(lattitude, longitude)
         let region = MKCoordinateRegionMakeWithDistance((location), 1500, 1500)
-        map.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
     }
     
     

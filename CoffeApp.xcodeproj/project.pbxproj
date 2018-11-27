@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC0221A221AD3717003458BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0221A121AD3717003458BC /* CoreLocation.framework */; };
 		DCCCCFD021AC86CB0050078F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCCCFCF21AC86CB0050078F /* AppDelegate.swift */; };
 		DCCCCFD221AC86CB0050078F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCCCFD121AC86CB0050078F /* ViewController.swift */; };
 		DCCCCFD521AC86CB0050078F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCCCFD321AC86CB0050078F /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC0221A121AD3717003458BC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DCCCCFCC21AC86CB0050078F /* CoffeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCCCFCF21AC86CB0050078F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCCCFD121AC86CB0050078F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0221A221AD3717003458BC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC0221A021AD3717003458BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC0221A121AD3717003458BC /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DCCCCFC321AC86CB0050078F = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +112,7 @@
 				DCCCCFE621AC86CD0050078F /* CoffeAppTests */,
 				DCCCCFF121AC86CD0050078F /* CoffeAppUITests */,
 				DCCCCFCD21AC86CB0050078F /* Products */,
+				DC0221A021AD3717003458BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
