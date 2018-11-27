@@ -16,25 +16,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     var coffeesArray:Coffees?
     var selectedCoffee:Coffee?
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
         DataSource.shared.retrieveData { (coffeesArray) in
             self.coffeesArray = coffeesArray
         }
         if selectedCoffee == nil{
-        for coffee in (self.coffeesArray?.bars)!{
-            addAnnotations(coffee: coffee)
+            for coffee in (self.coffeesArray?.bars)!{
+                addAnnotations(coffee: coffee)
+            }
+            goToLocation(lattitude: (coffeesArray?.bars![0].latitude!)!, longitude: (coffeesArray?.bars![0].longitude!)!)
         }
-                    goToLocation(lattitude: (coffeesArray?.bars![0].latitude!)!, longitude: (coffeesArray?.bars![0].longitude!)!)
+        else {
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            addAnnotations(coffee: selectedCoffee!)
+            goToLocation(lattitude: (selectedCoffee?.latitude)!, longitude: (selectedCoffee?.longitude)!)
+        }
     }
-    else {
-    let allAnnotations = self.mapView.annotations
-    self.mapView.removeAnnotations(allAnnotations)
-    addAnnotations(coffee: selectedCoffee!)
-    goToLocation(lattitude: (selectedCoffee?.latitude)!, longitude: (selectedCoffee?.longitude)!)
-    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
     }
     
     @IBAction func currentPosition(_ sender: Any) {

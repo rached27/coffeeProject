@@ -32,6 +32,7 @@ class TableHeaderView : UIView {
     }
     @objc func headerTaped(_ sender: UITapGestureRecognizer) {
         Delegate?.didChooseDelegate(index: self.coffeeName.tag)
+        
     }
 
     

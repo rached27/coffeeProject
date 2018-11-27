@@ -66,6 +66,7 @@ extension HomeViewController:UITableViewDataSource{
         let view = TableHeaderView()
         let coffeeName = self.coffeesArray?.bars![section].name
         view.coffeeName.text = coffeeName
+        view.Delegate  = self
         view.expandBtn.tag = section
         view.expandBtn.addTarget(self, action: #selector(handleExpand(_:)), for: .touchUpInside)
         
